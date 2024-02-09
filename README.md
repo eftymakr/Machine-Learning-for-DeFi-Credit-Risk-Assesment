@@ -23,6 +23,6 @@ Utilizing a diverse dataset from blockchains like Ethereum, with data preprocess
 
 
 2. **Machine Learning:**
-- Apply train/test split, oversampling, statistical learning and deep learning techniques using the file models and `Stat_learning_set_v0x.csv` as an input file. 
+- Apply train/test split, oversampling, statistical learning and deep learning techniques by using the file train_ensemble_models or train_CNN_model and `Stat_learning_set_v0x.csv` as an input file. 
 
 
