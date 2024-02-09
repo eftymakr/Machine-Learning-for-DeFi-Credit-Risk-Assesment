@@ -21,20 +21,8 @@ Utilizing a diverse dataset from blockchains like Ethereum, with data preprocess
        - Input file: `ML_input_v0x.csv`, which contains the training data aggregated my month, including the flag for whether the address was liquidated.
        - Output file 1: `Stat_learning_set_v0x.csv`, which contains the same data as `ML_input_v0x.csv`, but the time steps are pivoted out, hence it only contains one record per wallet address.
 
-   - The file `preprocessing_oversampling_v03.py` oversamples the data and stores individual files that are to be used for the training.
-       - Input file: `Stat_learning_set_v0x.csv`, which contains the same data as `ML_input_v0x.csv`, but the time steps are pivoted out, hence it only contains one record per wallet address.
-       - Output file 2: `X_train_chunk_{i}.npy` and `y_train_chunk_{i}.npy`, these contain oversampled training data of the `Stat_learning_set_v0x.csv` file
-       - Output file 2: `data_test.npy` and `full_data.npy`, these contains the original data from `Stat_learning_set_v0x.csv` in a file format for training.
+
+2. **Machine Learning:**
+- Apply train/test split, oversampling, statistical learning and deep learning techniques using the file models and `Stat_learning_set_v0x.csv` as an input file. 
 
 
-3. **Machine Learning:**
-- Apply statistical learning and deep learning techniques using `statistical_learning_v05.py`, passing the model; options are "XGB", "CatBoost", "LightGBM", "RF", "LR", and "CNN".
-
-
-
-## Usage
-
-1. Run the data preprocessing scripts (`preprocessing_filtering_v01.py` and `preprocessing_time_aggregation_v01.py`) to prepare the data.
-
-2. For statistical learning approach:
-   - Execute `statistical_learning_v05.py` for applying statistical learning models.
