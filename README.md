@@ -28,7 +28,7 @@ Utilizing a diverse dataset from blockchains like Ethereum, with data preprocess
 
 
 3. **Machine Learning:**
-- Apply statistical learning and deep learning techniques using `statistical_learning_v05.py`, passing the model; options are "XGB", "RF", "SVM", and "CNN".
+- Apply statistical learning and deep learning techniques using `statistical_learning_v05.py`, passing the model; options are "XGB", "CatBoost", "LightGBM", "RF", "LR", and "CNN".
 
 
 
