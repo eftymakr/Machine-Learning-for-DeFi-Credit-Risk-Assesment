@@ -45,18 +45,16 @@ def process_lending_data(input_file, stop_iteration, skip_chunks):
     stats_df = stats_df.rename(columns={'user': 'address', 'protocol_address': 'num_transactions'})
 
     # Reshape the data for analysis
-    print('mpike')
     grouped_df = stats_df.groupby(['address', 'protocol_name'], as_index=False).sum(numeric_only=False)
     pivoted_df = grouped_df.pivot(index='address', columns='protocol_name', values='num_transactions')
     pivoted_df.reset_index(inplace=True)
     pivoted_df = pivoted_df.fillna(0)
-    print('oxi')
 
     # Group and count interactions by protocol name
     protocol_interaction_count = stats_df[['address', 'protocol_name']].groupby(['address', 'protocol_name'], as_index=False).sum().groupby(['address'], as_index=False).count()
     protocol_interaction_count.sort_values('protocol_name')
     protocol_plot_data = protocol_interaction_count.groupby('protocol_name', as_index=False).count()
-    print('kiedw')
+
 
     # Create a bar plot for protocol interactions
     plt.bar(protocol_plot_data.protocol_name, protocol_plot_data.address, log=True)
@@ -66,13 +64,13 @@ def process_lending_data(input_file, stop_iteration, skip_chunks):
     plt.show()
 
     # Group and count interactions by chain name
-    print('edw1')
+    
     chain_interaction_count = stats_df[['address', 'chain_name']].groupby(['address', 'chain_name'], as_index=False).sum().groupby(['address'], as_index=False).count()
     chain_interaction_count.sort_values('chain_name')
     chain_plot_data = chain_interaction_count.groupby('chain_name', as_index=False).count()
 
     # Create a bar plot for chain interactions
-    print('edw2')
+    
     plt.bar(chain_plot_data.chain_name, chain_plot_data.address, log=True)
     plt.xticks(range(1, len(chain_plot_data) + 2, 1))
     plt.title('Number of wallets by multichain interaction')
