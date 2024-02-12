@@ -85,8 +85,8 @@ for i in range(nb_steps):
 
     if i == nb_steps - 1:
         i = 999
-        #dfm['liquidations'] = dfm.apply(lambda x: 1 if x.liquidation_total_count > 0 else 0, axis=1)
-        dfm['liquidations'] = dfm.apply(lambda x: 1 if (x.liquidation_total_count != 0) else 2 if (x.borrow_total_count != 0) else 3 if (x.deposit_total_count != 0) else 4 if (x.flashloan_total_count != 0) else 5 if (x.repay_total_count != 0) else 0, axis=1)
+        dfm['liquidations'] = dfm.apply(lambda x: 1 if x.liquidation_total_count > 0 else 0, axis=1)
+        #dfm['liquidations'] = dfm.apply(lambda x: 1 if (x.liquidation_total_count != 0) else 2 if (x.borrow_total_count != 0) else 3 if (x.deposit_total_count != 0) else 4 if (x.flashloan_total_count != 0) else 5 if (x.repay_total_count != 0) else 0, axis=1)
 
         dfn = pd.concat([dfn, dfm.liquidations], axis=1)
     else:
