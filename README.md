@@ -25,4 +25,5 @@ Utilizing a diverse dataset from blockchains like Ethereum, with data preprocess
 2. **Machine Learning:**
 - Apply train/test split, oversampling, statistical learning and deep learning techniques by using the file `train_ensemble_models.py` or `train_CNN_model.py` and `Stat_learning_set_v0x.csv` as an input file. 
 
-
+3. ** Ethereum Node:**
+- To set up an Ethereum node, follow the official instructions https://ethereum.org/developers/docs/nodes-and-clients/run-a-node
