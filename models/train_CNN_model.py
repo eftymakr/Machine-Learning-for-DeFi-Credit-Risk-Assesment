@@ -1,8 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[ ]:
-
 
 import pandas as pd
 from sklearn.model_selection import train_test_split
@@ -19,8 +14,7 @@ from sklearn.preprocessing import OneHotEncoder
 from imblearn.over_sampling import SMOTE
 from imblearn.pipeline import Pipeline as ImbPipeline
 
-# Assuming df is your DataFrame after loading the dataset
-# Assuming 'liquidations' is your target variable and 'address' is a categorical feature
+
 # Load your dataset
 df = pd.read_csv('Stat_Learning_set_v02.csv')
 
@@ -51,23 +45,19 @@ X = df.drop('liquidations', axis=1)
 y = df['liquidations']
 X_train, X_test, y_train, y_test = train_test_split(X, y, stratify=y, test_size=0.2, random_state=42)
 
-# Define CNN model within a function for KerasClassifier
+# Define CNN model 
 def create_cnn_model(input_dim):
     model = Sequential([
-        Conv1D(filters=64, kernel_size=3, activation='relu', input_shape=(input_dim, 1)),
-        BatchNormalization(),
-        Dropout(0.2),
-        Conv1D(filters=128, kernel_size=3, activation='relu'),
-        BatchNormalization(),
-        Dropout(0.2),
-        Flatten(),
-        Dense(400, activation='relu'),
-        Dropout(0.2),
-        Dense(20, activation='relu'),
-        Dropout(0.2),
-        Dense(10, activation='relu'),
-        Dropout(0.2),
-        Dense(1, activation='sigmoid')
+          # Dense(units=16,input_dim=X_train.shape[1],activation='relu'),
+          Dense(units=1000,input_dim=X_train.shape[1],activation='relu'),
+          Dropout(0.2),
+          Dense(units=400,activation='relu'),
+          Dropout(0.2),
+          Dense(units=20,activation='relu'),
+          Dropout(0.2),
+          Dense(units=10,activation='relu'),
+          # Dense(units=5,activation='relu'),
+          Dense(units=1,activation='sigmoid')
     ])
     model.compile(optimizer=Adam(), loss='binary_crossentropy', metrics=['accuracy'])
     return model
