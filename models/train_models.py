@@ -21,7 +21,7 @@ df = pd.read_csv('Stat_Learning_set_v02.csv')
 
 # Define numerical features
 numerical_features = df.select_dtypes(include=['int64', 'float64']).columns.tolist()
-numerical_features.remove('liquidations')  # Assuming 'liquidations' is your target variable
+numerical_features.remove('liquidations')  # 'liquidations' is the target variable
 
 # Preprocessing for numerical data: imputation + scaling
 numerical_transformer = ImbPipeline(steps=
